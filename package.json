@@ -1,13 +1,15 @@
 {
   "name": "leon-simple-electron-learn",
-  "version": "1.0.2",
+  "version": "0.0.4",
   "description": "",
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",
     "build": "gulp build",
+    "postinstall": "electron-builder install-app-deps",
+    "upgradeVerion": "gulp updateAppVersion",
     "package": "npm run build && electron-builder",
-    "release": "npm run build && cross-env GH_TOKEN='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' electron-builder --publish always"
+    "release": "npm run build && npm run upgradeVerion && cross-env GH_TOKEN='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' electron-builder --publish always"
   },
   "dependencies": {
     "electron-log": "5.0.1",
@@ -45,8 +47,8 @@
       "provider": "github",
       "owner": "liwangpu",
       "repo": "leon-simple-electron-learn",
-      "private": true,
-      "token": "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",
+      "private": false,
+      "token": "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",
       "channel": "latest",
       "releaseType": "release"
     }

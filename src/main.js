@@ -16,7 +16,7 @@ autoUpdater.logger = log
 let mainWin;
 
 const createWindow = () => {
-  const win = new BrowserWindow({
+  mainWin = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -40,9 +40,8 @@ const createWindow = () => {
   ])
   // Menu.setApplicationMenu(menu)
 
-  win.loadFile(path.join(__dirname, 'index.html'));
-  win.webContents.openDevTools();
-  return win;
+  mainWin.loadFile(path.join(__dirname, 'index.html'));
+  mainWin.webContents.openDevTools();
 }
 
 const sendMessage = (message) => {
@@ -59,21 +58,19 @@ const checkForUpdates = () => {
   //设置自动下载
   autoUpdater.autoDownload = false
 
-  autoUpdater.setFeedURL('https://github.com/liwangpu/leon-simple-electron-learn');
-
   autoUpdater.on('error', res => {
     log.info("获取版本出现错误:" + res)
-    sendMessage("获取版本出现错误:" + res);
+    sendMessage("获取版本出现错误:" + res ? JSON.stringify(res) : 'null');
   })
 
   autoUpdater.on('checking-for-update', res => {
     log.info("获取版本信息:" + res)
-    sendMessage("获取版本信息:" + res);
+    sendMessage("获取版本信息:" + res ? JSON.stringify(res) : 'null');
   })
 
   autoUpdater.on('update-not-available', res => {
     log.info("没有可更新版本:" + res)
-    sendMessage("没有可更新版本:" + res);
+    sendMessage("没有可更新版本:" + res ? JSON.stringify(res) : 'null');
   })
 
   autoUpdater.on('update-available', res => {
@@ -109,8 +106,9 @@ const checkForUpdates = () => {
 };
 
 app.whenReady().then(() => {
-  mainWin = createWindow();
+  createWindow();
+  sendMessage(`当前App版本:${app.getVersion()}`,);
   checkForUpdates();
-  sendMessage('更新url:' + autoUpdater.getFeedURL());
+
 });
 
