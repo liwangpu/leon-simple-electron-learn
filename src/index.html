@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+
+    window.electron.on('receiveMessage', (message) => {
+      console.log(message);
+    });
+
+    window.onload = function () {
+      // document.getElementById('btnTest').addEventListener('click', handleTest);
+
+      // window.versions.onUpdateCounter((_event, value) => {
+      //     console.log(`info:`,info);
+      // })
+    }
+
+    async function handleTest() {
+      const response = await window.versions.doTask('upgrade 2222!');
+
+      // window.electronAPI.doTask()撒旦发生的发
+      // console.log(`info:`,window.electronAPI);
+    }
+  </script>
 </head>
+
 <body>
-<h3>Hello</h3>
+  <h3>App</h3>
+
+  <!-- <button id="btnTest">测试</button> -->
+  <p>0.0.2</p>
 </body>
+
 </html>

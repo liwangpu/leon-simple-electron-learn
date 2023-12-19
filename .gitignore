@@ -6,3 +6,5 @@
 **/out-tsc
 # dependencies
 **/node_modules
+release/build
+*.log

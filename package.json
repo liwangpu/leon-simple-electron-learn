@@ -1,13 +1,55 @@
 {
-  "name": "simple-electron-app",
-  "version": "1.0.0",
+  "name": "leon-simple-electron-learn",
+  "version": "1.0.2",
   "description": "",
-  "main": "./src/app.js",
+  "main": "src/main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "gulp build",
+    "package": "npm run build && electron-builder",
+    "release": "npm run build && cross-env GH_TOKEN='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' electron-builder --publish always"
+  },
+  "dependencies": {
+    "electron-log": "5.0.1",
+    "electron-updater": "6.1.4"
   },
   "devDependencies": {
-    "electron": "^27.1.0"
+    "electron": "26.2.1",
+    "electron-reload": "2.0.0-alpha.1",
+    "electron-builder": "24.9.1",
+    "gulp": "4.0.2",
+    "cross-env": "7.0.3"
+  },
+  "build": {
+    "productName": "SimpleElectronApp",
+    "appId": "org.leon.SimpleElectronApp",
+    "files": [
+      "dist",
+      "node_modules",
+      "package.json"
+    ],
+    "win": {
+      "publish": [
+        "github"
+      ],
+      "target": [
+        "nsis"
+      ]
+    },
+    "directories": {
+      "app": "release/app",
+      "buildResources": "assets",
+      "output": "release/build"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "liwangpu",
+      "repo": "leon-simple-electron-learn",
+      "private": true,
+      "token": "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",
+      "channel": "latest",
+      "releaseType": "release"
+    }
   },
   "keywords": [],
   "author": "",
