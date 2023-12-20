@@ -1,8 +1,0 @@
-version: 0.0.2
-files:
-  - url: SimpleElectronApp-Setup-0.0.2.exe
-    sha512: hs1iB6WQoc/xwLiAisX5dO1482xLax8LFNIn13EdbgdomjBg42LM+yYAeKNJqT8G7+lG6Ilop8R/BKGA5emFkw==
-    size: 72366614
-path: SimpleElectronApp-Setup-0.0.2.exe
-sha512: hs1iB6WQoc/xwLiAisX5dO1482xLax8LFNIn13EdbgdomjBg42LM+yYAeKNJqT8G7+lG6Ilop8R/BKGA5emFkw==
-releaseDate: '2023-12-19T06:44:21.177Z'
